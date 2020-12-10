@@ -13,36 +13,30 @@
     include '../template/adm_nav.php';
     ?>
 
-    <a href="../adm_admin/tambah_admin.php">+ TAMBAH AMDIN</a>
+    <a href="../adm_kategori_barang/tambah_kategori_barang.php">+ TAMBAH KATEGORI</a>
     <br />
     <br />
 
     <table border="1">
         <tr>
             <th>NO</th>
-            <th>id</th>
-            <th>Nama</th>
-            <th>username</th>
-            <th>password</th>
+            <th>nama kategori</th>
             <th>Opsi</th>
         </tr>
 
         <?php
         include_once '../koneksi.php';
         $no = 1;
-        $data = mysqli_query($koneksi, "select * from user where level='admin'");
+        $data = mysqli_query($koneksi, "select * from kategori_barang");
 
         while ($d = mysqli_fetch_array($data)) {
         ?>
             <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $d['id_user']; ?></td>
-                <td><?php echo $d['nama']; ?></td>
-                <td><?php echo $d['username']; ?></td>
-                <td><?php echo $d['password']; ?></td>
+                <td><?php echo $d['ktg_barang']; ?></td>
                 <td>
-                    <a href="../adm_admin/edit_admin.php?id_user= <?php echo $d['id_user']; ?>">EDIT</a>
-                    <a href="../adm_admin/hapus_admin.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>
+                    <a href="../adm_kategori_barang/edit_kategori_barang.php?id_ktg_barang= <?php echo $d['id_ktg_barang']; ?>">EDIT</a>
+                    <a href="../adm_kategori_barang/hapus_kategori_barang.php?id_ktg_barang= <?php echo $d['id_ktg_barang']; ?>">HAPUS</a>
                 </td>
             </tr>
         <?php

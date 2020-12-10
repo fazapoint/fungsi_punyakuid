@@ -9,36 +9,34 @@
 
 <body>
 
-    <?php 
-	include '../template/adm_nav.php';
-	?>
-	
-    <a href="../adm_kategori/tambah_kategori.php">+ TAMBAH KATEGORI</a>
+    <?php
+    include '../template/adm_nav.php';
+    ?>
+
+    <a href="../adm_kota/tambah_kota.php">+ TAMBAH KATEGORI</a>
     <br />
     <br />
 
     <table border="1">
         <tr>
-			<th>NO</th>
-			<th>id kategori</th>
-            <th>nama kategori</th>
+            <th>NO</th>
+            <th>Kota</th>
             <th>Opsi</th>
         </tr>
 
         <?php
         include_once '../koneksi.php';
         $no = 1;
-        $data = mysqli_query($koneksi, "select * from kategori");
+        $data = mysqli_query($koneksi, "select * from kota");
 
         while ($d = mysqli_fetch_array($data)) {
         ?>
             <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $d['id_kategori']; ?></td>
-                <td><?php echo $d['nama_kategori']; ?></td>      
+                <td><?php echo $d['nama_kota']; ?></td>
                 <td>
-                    <a href="edit.php?id_kategori= <?php echo $d['id_kategori']; ?>">EDIT</a>
-                    <a href="hapus.php?id_kategori= <?php echo $d['id_kategori']; ?>">HAPUS</a>
+                    <a href="../adm_kota/edit_kota.php?id_kota= <?php echo $d['id_kota']; ?>">EDIT</a>
+                    <a href="../adm_kota/hapus_kota.php?id_kota= <?php echo $d['id_kota']; ?>">HAPUS</a>
                 </td>
             </tr>
         <?php

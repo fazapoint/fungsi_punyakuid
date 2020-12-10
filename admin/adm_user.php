@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD PHP</title>
 </head>
 
 <body>
@@ -13,15 +12,11 @@
     include '../template/adm_nav.php';
     ?>
 
-    <a href="../adm_admin/tambah_admin.php">+ TAMBAH AMDIN</a>
-    <br />
-    <br />
-
     <table border="1">
         <tr>
             <th>NO</th>
             <th>id</th>
-            <th>Nama</th>
+            <th>nama</th>
             <th>username</th>
             <th>password</th>
             <th>Opsi</th>
@@ -30,7 +25,7 @@
         <?php
         include_once '../koneksi.php';
         $no = 1;
-        $data = mysqli_query($koneksi, "select * from user where level='admin'");
+        $data = mysqli_query($koneksi, "select * from user where level='user'");
 
         while ($d = mysqli_fetch_array($data)) {
         ?>
@@ -41,8 +36,8 @@
                 <td><?php echo $d['username']; ?></td>
                 <td><?php echo $d['password']; ?></td>
                 <td>
-                    <a href="../adm_admin/edit_admin.php?id_user= <?php echo $d['id_user']; ?>">EDIT</a>
-                    <a href="../adm_admin/hapus_admin.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>
+                    <a href="../adm_user/edit_user.php?id_user= <?php echo $d['id_user']; ?>">EDIT</a>
+                    <a href="../adm_user/hapus_user.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>
                 </td>
             </tr>
         <?php
