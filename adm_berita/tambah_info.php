@@ -13,11 +13,11 @@
 	session_start();
 	?>
 
-	<h2>BERITA</h2>
+	<h2>info</h2>
 	<h4>halo <?php echo $_SESSION['id_user']; ?></h4>
 	<br />
 	<br />
-	<h3>TAMBAH DATA BERITA</h3>
+	<h3>TAMBAH DATA info</h3>
 	<form method="post" action="">
 		<table>
 			<tr>
@@ -26,26 +26,10 @@
 					<input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
 					<select name="kategori" id="kategori">
 						<?php
-						$query_kategori = "select * from kategori_berita";
+						$query_kategori = "select * from kategori_info";
 						$sql_kategori = mysqli_query($koneksi, $query_kategori);
 						while ($data_kategori = mysqli_fetch_array($sql_kategori)) {
-							echo "<option value='" . $data_kategori['id_ktg_berita'] . "' $select>" . $data_kategori['ktg_berita'] . "</option>";
-						}
-						?>
-
-
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>kota</td>
-				<td>
-					<select name="kota" id="kota">
-						<?php
-						$query_kota = "select * from kota";
-						$sql_kota = mysqli_query($koneksi, $query_kota);
-						while ($data_kota = mysqli_fetch_array($sql_kota)) {
-							echo "<option value='" . $data_kota['id_kota'] . "' $select>" . $data_kota['nama_kota'] . "</option>";
+							echo "<option value='" . $data_kategori['id_ktg_info'] . "' $select>" . $data_kategori['ktg_info'] . "</option>";
 						}
 						?>
 
@@ -81,17 +65,16 @@
 	if (isset($_POST['submit'])) {
 		$kategori = $_POST['kategori'];
 		$id_user = $_POST['id_user'];
-		$kota = $_POST['kota'];
 		$judul = $_POST['judul'];
 		$isi = $_POST['isi'];
 		$tgl = $_POST['tgl'];
-		$query = "insert into berita values('','$kategori','$id_user','$kota','$judul','$isi','$tgl')";
+		$query = "insert into info values('','$kategori','$id_user','$judul','$isi','$tgl')";
 		$hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
 	?>
 
 		<script>
 			alert("Data berhasil ditambahkan");
-			window.location = '../admin/adm_berita.php';
+			window.location = '../admin/adm_info.php';
 		</script>
 	<?php
 	}

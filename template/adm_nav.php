@@ -39,13 +39,20 @@
 	<table border='1'>
 		<tr>
 			<th><a href="../admin/dashboard_admin.php">Dashboard</a></th>
+			<!-- INI MENU ADMIN USER -->
 			<th><a href="../admin/adm_admin.php">Admin</a></th>
 			<th><a href="../admin/adm_user.php">User</a></th>
-			<th><a href="../admin/adm_berita.php">Berita</a></th>
-			<th><a href="../admin/adm_kategori_berita.php">Kategori berita</a></th>
+			<!-- INI MENU ADMIN Info -->
+			<th><a href="../admin/adm_info.php">info</a></th>
+			<!-- INI MENU ADMIN KATEGORI -->
+			<th><a href="../admin/adm_kategori_info.php">Kategori info</a></th>
 			<th><a href="../admin/adm_kategori_barang.php">Kategori barang</a></th>
 			<th><a href="../admin/adm_kota.php">Kota</a></th>
-			<th><a href="../admin/adm_barang_hilang.php">Barang Hilang</a></th>
+			<!-- INI MENU ADMIN BARANG HILANG -->
+			<th><a href="../admin/adm_barang_hilang_tunda.php">Barang Hilang Tunda</a></th>
+			<th><a href="../admin/adm_barang_hilang_tolak.php">Barang Hilang Tolak</a></th>
+			<th><a href="../admin/adm_barang_hilang_terbit.php">Barang Hilang Terbit</a></th>
+			<th><a href="../admin/adm_barang_hilang_selesai.php">Barang Hilang Selesai</a></th>
 		</tr>
 	</table>
 

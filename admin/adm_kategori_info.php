@@ -13,7 +13,7 @@
     include '../template/adm_nav.php';
     ?>
 
-    <a href="../adm_kategori_berita/tambah_kategori_berita.php">+ TAMBAH KATEGORI</a>
+    <a href="../adm_kategori_info/tambah_kategori_info.php">+ TAMBAH KATEGORI</a>
     <br />
     <br />
 
@@ -27,16 +27,16 @@
         <?php
         include_once '../koneksi.php';
         $no = 1;
-        $data = mysqli_query($koneksi, "select * from kategori_berita");
+        $data = mysqli_query($koneksi, "select * from kategori_info");
 
         while ($d = mysqli_fetch_array($data)) {
         ?>
             <tr>
                 <td><?php echo $no++; ?></td>
-                <td><?php echo $d['ktg_berita']; ?></td>
+                <td><?php echo $d['ktg_info']; ?></td>
                 <td>
-                    <a href="../adm_kategori_berita/edit_kategori_berita.php?id_ktg_berita= <?php echo $d['id_ktg_berita']; ?>">EDIT</a>
-                    <a href="../adm_kategori_berita/hapus_kategori_berita.php?id_ktg_berita= <?php echo $d['id_ktg_berita']; ?>">HAPUS</a>
+                    <a href="../adm_kategori_info/edit_kategori_info.php?id_ktg_info= <?php echo $d['id_ktg_info']; ?>">EDIT</a>
+                    <a href="../adm_kategori_info/hapus_kategori_info.php?id_ktg_info= <?php echo $d['id_ktg_info']; ?>">HAPUS</a>
                 </td>
             </tr>
         <?php

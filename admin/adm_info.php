@@ -14,7 +14,7 @@
     ?>
 
 
-    <a href="../adm_berita/tambah_berita.php">+ TAMBAH BERITA</a>
+    <a href="../adm_info/tambah_info.php">+ TAMBAH info</a>
     <br />
     <br />
 
@@ -23,7 +23,6 @@
             <th>NO</th>
             <th>admin</th>
             <th>kategori</th>
-            <th>kota</th>
             <th>judul</th>
             <th>tanggal</th>
             <th>Opsi</th>
@@ -34,10 +33,9 @@
         $no = 1;
         $data = mysqli_query(
             $koneksi,
-            "select * from berita
-		inner join user on berita.id_user = user.id_user
-        inner join kategori_berita on berita.id_ktg_berita = kategori_berita.id_ktg_berita
-        inner join kota on berita.id_kota = kota.id_kota"
+            "select * from info
+		inner join user on info.id_user = user.id_user
+        inner join kategori_info on info.id_ktg_info = kategori_info.id_ktg_info"
         );
 
         while ($d = mysqli_fetch_array($data)) {
@@ -46,13 +44,12 @@
             <tr>
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $d['nama']; ?></td>
-                <td><?php echo $d['ktg_berita']; ?></td>
-                <td><?php echo $d['nama_kota']; ?></td>
-                <td><?php echo $d['judul_berita']; ?></td>
-                <td><?php echo date('d-m-Y', strtotime($d['tgl_berita']));  ?></td>
+                <td><?php echo $d['ktg_info']; ?></td>
+                <td><?php echo $d['judul_info']; ?></td>
+                <td><?php echo date('d-m-Y', strtotime($d['tgl_info']));  ?></td>
                 <td>
-                    <a href="../adm_berita/edit_berita.php?id_berita= <?php echo $d['id_berita']; ?>">EDIT</a>
-                    <a href="../adm_berita/hapus_berita.php?id_berita= <?php echo $d['id_berita']; ?>">HAPUS</a>
+                    <a href="../adm_info/edit_info.php?id_info= <?php echo $d['id_info']; ?>">EDIT</a>
+                    <a href="../adm_info/hapus_info.php?id_info= <?php echo $d['id_info']; ?>">HAPUS</a>
                 </td>
             </tr>
         <?php

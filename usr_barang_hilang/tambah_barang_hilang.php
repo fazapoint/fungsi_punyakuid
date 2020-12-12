@@ -106,13 +106,13 @@
         $pencari_bh = $_POST['pencari_bh'];
         $alamat = $_POST['alamat'];
         $nomor_hp = $_POST['nomor_hp'];
-        $query = "insert into barang_hilang values('','$kategori','$id_user','$kota','0','$nama_bh','$merk_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$pencari_bh','$alamat','$nomor_hp','0')";
+        $query = "insert into barang_hilang values('','$kategori','$id_user','$kota','1','0','$nama_bh','$merk_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$pencari_bh','$alamat','$nomor_hp','')";
         $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
     ?>
 
         <script>
             alert("Data berhasil ditambahkan");
-            window.location = '../user/home.php';
+            window.location = '../user/usr_barang_hilang.php';
         </script>
     <?php
     }

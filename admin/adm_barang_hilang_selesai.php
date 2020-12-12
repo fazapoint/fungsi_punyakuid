@@ -10,10 +10,10 @@
 <body>
 
     <?php
-    include '../template/adm_nav.php';
+    include_once '../template/adm_nav.php';
     ?>
 
-    <a href="../adm_barang_hilang/tambah_barang_hilang.php">+ TAMBAH BARANG</a>
+
     <br />
     <br />
 
@@ -21,6 +21,7 @@
         <tr>
             <th>NO</th>
             <th>Id Barang</th>
+            <th>Username</th>
             <th>Kategori Barang</th>
             <th>Kota</th>
             <th>Nama Barang</th>
@@ -31,6 +32,7 @@
             <th>Nama Pencari</th>
             <th>Alamat</th>
             <th>Nomor HP Pencari</th>
+            <th>Status</th>
             <th>Opsi</th>
         </tr>
 
@@ -41,7 +43,10 @@
             $koneksi,
             "select * from barang_hilang
         inner join kategori_barang on barang_hilang.id_ktg_barang = kategori_barang.id_ktg_barang
-        inner join kota on barang_hilang.id_kota = kota.id_kota"
+        inner join kota on barang_hilang.id_kota = kota.id_kota
+        inner join user on barang_hilang.id_user = user.id_user
+        inner join status on barang_hilang.id_status = status.id_status
+        where status.id_status ='4'"
         );
 
         while ($d = mysqli_fetch_array($data)) {
@@ -49,6 +54,7 @@
             <tr>
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $d['id_bh']; ?></td>
+                <td><?php echo $d['username']; ?></td>
                 <td><?php echo $d['ktg_barang']; ?></td>
                 <td><?php echo $d['nama_kota']; ?></td>
                 <td><?php echo $d['nama_bh']; ?></td>
@@ -59,10 +65,12 @@
                 <td><?php echo $d['pencari_bh']; ?></td>
                 <td><?php echo $d['alamat']; ?></td>
                 <td><?php echo $d['nomor_hp']; ?></td>
+                <td><?php echo $d['ket_status']; ?></td>
                 <td>
-                    <a href="../adm_barang_hilang/edit_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">TERIMA</a>
-                    <a href="../adm_barang_hilang/hapus_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">HAPUS</a>
+                    <a href="../adm_barang_hilang_selesai/hapus_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">HAPUS</a>
+                    <a href="../adm_barang_hilang_selesai/detail_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">DETAIL</a>
                 </td>
+
             </tr>
         <?php
         }

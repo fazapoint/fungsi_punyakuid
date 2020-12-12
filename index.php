@@ -41,12 +41,12 @@
 			<tr>
 				<td>Username</td>
 				<td>:</td>
-				<td><input type="text" name="username" placeholder="Masukkan username"></td>
+				<td><input type="text" name="username" placeholder="Masukkan username" required></td>
 			</tr>
 			<tr>
 				<td>Password</td>
 				<td>:</td>
-				<td><input type="password" name="password" placeholder="Masukkan password"></td>
+				<td><input type="password" name="password" placeholder="Masukkan password" required></td>
 			</tr>
 			<tr>
 				<td></td>

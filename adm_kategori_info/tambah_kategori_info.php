@@ -32,13 +32,13 @@
 
     if (isset($_POST['submit'])) {
         $kategori = $_POST['kategori'];
-        $query = "insert into kategori_berita values('','$kategori')";
+        $query = "insert into kategori_info values('','$kategori')";
         $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
     ?>
 
         <script>
             alert("Data berhasil ditambahkan");
-            window.location = '../admin/adm_kategori_berita.php';
+            window.location = '../admin/adm_kategori_info.php';
         </script>
     <?php
     }

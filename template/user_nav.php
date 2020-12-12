@@ -38,9 +38,8 @@
 
     <table border='1'>
         <tr>
-            <th><a href="../user/post_bh.php">buat barang hilang</a></th>
-            <th><a href="../user/post_tunda.php">post tertuda</a></th>
-            <th><a href="../user/adm_berita.php">Menu 3</a></th>
+            <th><a href="../usr_barang_hilang/tambah_barang_hilang.php">buat barang hilang</a></th>
+            <th><a href="../user/usr_barang_hilang.php">Barang Hilang</a></th>
             <th><a href="../user/adm_kategori_berita.php">Menu 4</a></th>
             <th><a href="../user/adm_barang_hilang.php">Menu 5</a></th>
             <th><a href="../user/adm_orang_hilang.php">Menu 6</a></th>
