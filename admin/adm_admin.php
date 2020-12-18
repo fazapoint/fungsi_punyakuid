@@ -22,8 +22,10 @@
             <th>NO</th>
             <th>id</th>
             <th>Nama</th>
+            <th>Email</th>
             <th>username</th>
             <th>password</th>
+            <th>foto</th>
             <th>Opsi</th>
         </tr>
 
@@ -38,8 +40,10 @@
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $d['id_user']; ?></td>
                 <td><?php echo $d['nama']; ?></td>
+                <td><?php echo $d['email']; ?></td>
                 <td><?php echo $d['username']; ?></td>
                 <td><?php echo $d['password']; ?></td>
+                <td><img src="../gambar_user/<?php echo $d['gambar_user']; ?>" alt="<?php echo $d['nama']; ?>" width="100px" height="100px"></td>
                 <td>
                     <a href="../adm_admin/edit_admin.php?id_user= <?php echo $d['id_user']; ?>">EDIT</a>
                     <a href="../adm_admin/hapus_admin.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>

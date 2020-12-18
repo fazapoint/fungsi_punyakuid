@@ -23,6 +23,16 @@
     ?>
         <form method="POST" action="">
             <table>
+                <?php
+                if ($d['pesan_bh'] != "") {
+                ?>
+                    <tr>
+                        <td>Pesan</td>
+                        <td><?php echo $d['pesan_bh']; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
                 <tr>
                     <td>Kategori</td>
                     <td>

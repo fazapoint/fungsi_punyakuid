@@ -59,7 +59,7 @@
                 <td><?php echo $d['nama_kota']; ?></td>
                 <td><?php echo $d['nama_bh']; ?></td>
                 <td><?php echo $d['merk_bh']; ?></td>
-                <td><?php echo $d['tgl_bh']; ?></td>
+                <td><?php echo date('d-m-Y', strtotime($d['tgl_bh']));  ?></td>
                 <td><?php echo $d['lokasi_bh']; ?></td>
                 <td><?php echo $d['penyebab_bh']; ?></td>
                 <td><?php echo $d['pencari_bh']; ?></td>

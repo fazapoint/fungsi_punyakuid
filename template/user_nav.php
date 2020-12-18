@@ -38,7 +38,8 @@
 
     <table border='1'>
         <tr>
-            <th><a href="../usr_barang_hilang/tambah_barang_hilang.php">buat barang hilang</a></th>
+            <th><a href="../user/home.php">Profil Saya</a></th>
+            <th><a href="../user/usr_tambah_barang_hilang.php">Tambah Barang Hilang</a></th>
             <th><a href="../user/usr_barang_hilang.php">Barang Hilang</a></th>
             <th><a href="../user/adm_kategori_berita.php">Menu 4</a></th>
             <th><a href="../user/adm_barang_hilang.php">Menu 5</a></th>

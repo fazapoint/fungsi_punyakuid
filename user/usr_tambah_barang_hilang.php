@@ -112,7 +112,7 @@
 
         <script>
             alert("Data berhasil ditambahkan");
-            window.location = '../user/usr_barang_hilang.php';
+            window.location = 'usr_barang_hilang_tunda.php';
         </script>
     <?php
     }

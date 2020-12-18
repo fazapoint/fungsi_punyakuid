@@ -21,7 +21,7 @@
 
 	if (isset($_GET['pesan'])) {
 		if ($_GET['pesan'] == "gagal") {
-			echo "<div class='alert'>Username dan Password tidak sesuai !</div>";
+			echo "<div class='alert'>Username atau Password tidak sesuai !</div>";
 		} else if ($_GET['pesan'] == "belum_login") {
 			echo "<div class='alert'>Anda belum login</div>";
 		} else if ($_GET['pesan'] == "bukan_user") {
@@ -30,6 +30,8 @@
 			echo "<div class='alert'>Anda bukan admin</div>";
 		} else if ($_GET['pesan'] == "logout") {
 			echo "<div class='alert'>Anda berhasil logout</div>";
+		} else if ($_GET['pesan'] == "daftar_sukses") {
+			echo "<div class='alert'>Daftar sukses silahkan login</div>";
 		}
 	}
 
@@ -55,6 +57,8 @@
 			</tr>
 		</table>
 	</form>
+	<h4>belum punya akun?</h4>
+	<a href="daftar.php">Daftar</a>
 </body>
 
 </html>
