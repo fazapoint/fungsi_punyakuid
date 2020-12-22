@@ -50,8 +50,13 @@
         inner join kategori_barang on barang_hilang.id_ktg_barang = kategori_barang.id_ktg_barang 
         inner join kota on barang_hilang.id_kota = kota.id_kota 
         inner join status on barang_hilang.id_status = status.id_status 
-        where id_user='$id_user' and barang_hilang.id_status='1' or barang_hilang.id_status='2' or barang_hilang.id_status='3'
-        order by status.id_status, tgl_bh, nama_bh"
+        where id_user='$id_user' 
+        order by case
+        when status.id_status = '2' then 1
+        when status.id_status = '1' then 2
+        when status.id_status = '3' then 3
+        else 4
+        end asc"
         );
 
         while ($d = mysqli_fetch_array($data)) {
