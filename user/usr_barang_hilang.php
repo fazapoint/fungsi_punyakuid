@@ -13,15 +13,9 @@
     include '../template/user_nav.php';
     include_once '../koneksi.php';
     $id_user = $_SESSION['id_user'];
-
-    $data_selesai = mysqli_query($koneksi, "select id_bh from barang_hilang where id_status='4' and id_user='$id_user'");
-    $jml_selesai = mysqli_num_rows($data_selesai);
-
     ?>
 
-    <h4>Jumlah barangmu yang sudah ketemu : <?php echo $jml_selesai ?> </h4>
-    <br />
-    <a href="usr_tambah_barang_hilang.php">+ TAMBAH BARANG</a>
+
     <br />
     <br />
 
@@ -50,7 +44,7 @@
         inner join kategori_barang on barang_hilang.id_ktg_barang = kategori_barang.id_ktg_barang 
         inner join kota on barang_hilang.id_kota = kota.id_kota 
         inner join status on barang_hilang.id_status = status.id_status 
-        where id_user='$id_user' 
+        where id_user='$id_user' and status.id_status <= 3 
         order by case
         when status.id_status = '2' then 1
         when status.id_status = '1' then 2

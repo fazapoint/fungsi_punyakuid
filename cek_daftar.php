@@ -30,5 +30,5 @@ if ($duplikat_username > 0 and $duplikat_email > 0) {
 } else {
     $query = "insert into user values('','$nama', '$email', '$username','$password_hash','user','user_dummy.png')";
     $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
-    header("location:index.php?pesan=daftar_sukses");
+    header("location:login.php?pesan=daftar_sukses");
 }

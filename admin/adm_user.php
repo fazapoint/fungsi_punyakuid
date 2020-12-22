@@ -35,6 +35,7 @@
                 <td><?php echo $d['nama']; ?></td>
                 <td><?php echo $d['username']; ?></td>
                 <td><?php echo $d['password']; ?></td>
+                <td><img src="../gambar_user/<?php echo $d['gambar_user']; ?>" alt="<?php echo $d['nama']; ?>" width="100px" height="100px"></td>
                 <td>
                     <a href="../adm_user/edit_user.php?id_user= <?php echo $d['id_user']; ?>">EDIT</a>
                     <a href="../adm_user/hapus_user.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>

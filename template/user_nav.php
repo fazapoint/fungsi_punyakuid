@@ -17,11 +17,11 @@
 
     // cek apakah yang mengakses halaman ini sudah login
     if ($_SESSION['level'] != "user") {
-        header("location:../index.php?pesan=bukan_user");
+        header("location:../login.php?pesan=bukan_user");
     }
 
     if ($_SESSION['status'] != "login") {
-        header("location:../index.php?pesan=belum_login");
+        header("location:../login.php?pesan=belum_login");
     }
 
     ?>
@@ -38,7 +38,8 @@
 
     <table border='1'>
         <tr>
-            <th><a href="../user/home.php">Profil Saya</a></th>
+            <th><a href="../user/dashboard_user.php">Dashboard User</a></th>
+            <th><a href="../user/usr_user_profil.php">Profil Saya</a></th>
             <th><a href="../user/usr_tambah_barang_hilang.php">Tambah Barang Hilang</a></th>
             <th><a href="../user/usr_barang_hilang.php">Barang Hilang</a></th>
             <th><a href="../user/adm_kategori_berita.php">Menu 4</a></th>

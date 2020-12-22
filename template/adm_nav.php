@@ -17,11 +17,11 @@
 
 	// cek apakah yang mengakses halaman ini sudah login
 	if ($_SESSION['level'] != "admin") {
-		header("location:../index.php?pesan=bukan_admin");
+		header("location:../login.php?pesan=bukan_admin");
 	}
 
 	if ($_SESSION['status'] != "login") {
-		header("location:../index.php?pesan=belum_login");
+		header("location:../login.php?pesan=belum_login");
 	}
 
 	?>
@@ -40,6 +40,7 @@
 		<tr>
 			<th><a href="../admin/dashboard_admin.php">Dashboard</a></th>
 			<!-- INI MENU ADMIN USER -->
+			<th><a href="../admin/adm_admin_profil.php">Profil</a></th>
 			<th><a href="../admin/adm_admin.php">Admin</a></th>
 			<th><a href="../admin/adm_user.php">User</a></th>
 			<!-- INI MENU ADMIN Info -->

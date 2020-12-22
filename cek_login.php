@@ -31,12 +31,12 @@ if ($cek > 0) {
 			$_SESSION['level'] = "user";
 			$_SESSION['status'] = "login";
 			// alihkan ke halaman dashboard pegawai
-			header("location:user/home.php");
+			header("location:user/dashboard_user.php");
 		}
 	} else {
 		// alihkan ke halaman login kembali
-		header("location:index.php?pesan=gagal");
+		header("location:login.php?pesan=gagal");
 	}
 } else {
-	header("location:index.php?pesan=gagal");
+	header("location:login.php?pesan=gagal");
 }
