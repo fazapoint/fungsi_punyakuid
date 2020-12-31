@@ -33,6 +33,7 @@
             <th>Alamat Pencari</th>
             <th>Nomor HP Pencari</th>
             <th>Status</th>
+            <th>Gambar</th>
             <th>Opsi</th>
         </tr>
 
@@ -68,6 +69,7 @@
                 <td><?php echo $d['alamat']; ?></td>
                 <td><?php echo $d['nomor_hp']; ?></td>
                 <td><?php echo $d['ket_status']; ?></td>
+                <td><img src="../img/barang_hilang/<?php echo $d['gambar_bh']; ?>" width=" 100px" height="100px"></td>
                 <td>
                     <?php
                     if ($d['id_status'] == "1") {

@@ -15,10 +15,10 @@
 
     <h2>BARANG</h2>
     <h4>halo <?php echo $_SESSION['id_user']; ?></h4>
-    <br />
-    <br />
+
+
     <h3>TAMBAH BARANG HILANG</h3>
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Kategori</td>
@@ -81,6 +81,13 @@
                 <td>Nomor hp</td>
                 <td><input type="text" name="nomor_hp"></td>
             </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <img src="../img/barang_hilang/barang_dummy.png" id="uploadPreview" style="width: 150px; height: 150px;" /><br>
+                    <input id="uploadImage" type="file" accept=".jpg, .png" name="gambar_bh" onchange="PreviewImage();" />
+                </td>
+            </tr>
             <td></td>
             <td><input type="submit" name="submit" value="SIMPAN"></td>
             </tr>
@@ -106,20 +113,44 @@
         $pencari_bh = $_POST['pencari_bh'];
         $alamat = $_POST['alamat'];
         $nomor_hp = $_POST['nomor_hp'];
-        $query = "insert into barang_hilang values('','$kategori','$id_user','$kota','1','0','$nama_bh','$merk_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$pencari_bh','$alamat','$nomor_hp','')";
-        $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
-    ?>
+        $gambar_bh = $_FILES['gambar_bh']['name'];
 
-        <script>
-            alert("Data berhasil ditambahkan");
-            window.location = 'usr_barang_hilang.php';
-        </script>
-    <?php
+        if ($gambar_bh != "") {
+            $ekstensi_boleh = array('png', 'jpg', 'jpeg');
+            $x = explode('.', $gambar_bh);
+            $ekstensi = strtolower(end($x));
+            $file_tmp = $_FILES['gambar_bh']['tmp_name'];
+            $ukuran = $_FILES['gambar_bh']['size'];
+            $maxsize = 1044070;
+            $angka_acak = rand(1, 999);
+            $nama_baru = $angka_acak . '-' . $gambar_bh;
+
+            if (in_array($ekstensi, $ekstensi_boleh) === false) {
+                header("location:usr_tambah_barang_hilang.php?pesan=ekstensi");
+            } elseif ($ukuran >= $maxsize || $ukuran == 0) {
+                header("location:usr_tambah_barang_hilang.php?pesan=ukuran");
+            } else {
+                move_uploaded_file($file_tmp, '../img/barang_hilang/' . $nama_baru);
+                $query = "insert into barang_hilang values('','$kategori','$id_user','$kota','1','0','$nama_bh','$merk_bh','$tgl_bh','$lokasi_bh','$penyebab_bh','$pencari_bh','$alamat','$nomor_hp','$nama_baru','')";
+                $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+                echo "<script>alert('Data berhasil ditambahkan');window.location='../user/usr_barang_hilang.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Sertakan gambar barang');window.location='../user/usr_tambah_barang_hilang.php';</script>";
+        }
     }
     ?>
 
 
-
+    <script type="text/javascript">
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };
+    </script>
 </body>
 
 </html>

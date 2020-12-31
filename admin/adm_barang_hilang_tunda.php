@@ -33,6 +33,7 @@
             <th>Alamat</th>
             <th>Nomor HP Pencari</th>
             <th>Status</th>
+            <th>Gambar</th>
             <th>Opsi</th>
         </tr>
 
@@ -66,6 +67,7 @@
                 <td><?php echo $d['alamat']; ?></td>
                 <td><?php echo $d['nomor_hp']; ?></td>
                 <td><?php echo $d['ket_status']; ?></td>
+                <td><img src="../img/barang_hilang/<?php echo $d['gambar_bh']; ?>" width=" 100px" height="100px"></td>
                 <td>
                     <a href="../adm_barang_hilang_tunda/terima_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">TERIMA</a>
                     <a href="../adm_barang_hilang_tunda/tolak_barang_hilang.php?id_bh= <?php echo $d['id_bh']; ?>">TOLAK</a>

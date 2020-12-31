@@ -58,7 +58,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <img src="../gambar_user/user_dummy.png" id="uploadPreview" style="width: 150px; height: 150px;" /><br>
+                    <img src="../img/user/user_dummy.png" id="uploadPreview" style="width: 150px; height: 150px;" /><br>
                     <input id="uploadImage" type="file" accept=".jpg, .png" name="foto_user" onchange="PreviewImage();" />
                 </td>
             </tr>
@@ -113,7 +113,7 @@
                 } elseif ($ukuran >= $maxsize || $ukuran == 0) {
                     header("location:tambah_admin.php?pesan=ukuran");
                 } else {
-                    move_uploaded_file($file_tmp, '../gambar_user/' . $nama_baru);
+                    move_uploaded_file($file_tmp, '../img/user/' . $nama_baru);
                     $query = "insert into user values('','$nama', '$email', '$username','$password_hash','admin','$nama_baru')";
                     $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
                     echo "<script>alert('Data berhasil disimpan');window.location='../admin/adm_admin.php';</script>";

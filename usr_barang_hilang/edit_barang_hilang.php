@@ -21,7 +21,7 @@
 
     while ($d = mysqli_fetch_array($data)) {
     ?>
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
             <table>
                 <?php
                 if ($d['pesan_bh'] != "") {
@@ -118,6 +118,14 @@
                     <td>Nomor hp</td>
                     <td><input type="text" name="nomor_hp" value="<?php echo $d['nomor_hp']; ?>"></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <img src="../img/barang_hilang/<?php echo $d['gambar_bh']; ?>" id="uploadPreview" style="width: 150px; height: 150px;"><br>
+                        <input id="uploadImage" type="file" accept=".jpg, .png" name="gambar_bh" onchange="PreviewImage();" />
+                        <input type="hidden" name="gambar_lama" value="<?php echo $d['gambar_bh']; ?>">
+                    </td>
+                </tr>
                 <td></td>
                 <td><input type="submit" name="submit" value="SIMPAN"></td>
                 </tr>
@@ -146,34 +154,78 @@
         $pencari_bh = $_POST['pencari_bh'];
         $alamat = $_POST['alamat'];
         $nomor_hp = $_POST['nomor_hp'];
-        $query = "update barang_hilang set 
-        id_ktg_barang='$kategori', 
-        id_user='$id_user',
-        id_kota='$kota',
-        admin_acc='',
-        nama_bh='$nama_bh',
-        merk_bh='$merk_bh',
-        tgl_bh='$tgl_bh',
-        lokasi_bh='$lokasi_bh',
-        penyebab_bh='$penyebab_bh',
-        pencari_bh='$pencari_bh',
-        alamat='$alamat',
-        nomor_hp='$nomor_hp',
-        id_status='1',
-        pesan_bh=''
-        where id_bh='$id_bh'";
-        $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
-    ?>
+        $gambar_bh = $_FILES['gambar_bh']['name'];
+        $gambar_lama = $_POST['gambar_lama'];
 
-        <script>
-            alert("Data berhasil ditambahkan");
-            window.location = '../user/usr_barang_hilang.php';
-        </script>
-    <?php
+        if ($gambar_bh != "") {
+            $ekstensi_boleh = array('png', 'jpg', 'jpeg');
+            $x = explode('.', $gambar_bh);
+            $ekstensi = strtolower(end($x));
+            $file_tmp = $_FILES['gambar_bh']['tmp_name'];
+            $ukuran = $_FILES['gambar_bh']['size'];
+            $maxsize = 1044070;
+            $angka_acak = rand(1, 999);
+            $nama_baru = $angka_acak . '-' . $gambar_bh;
+
+            if (in_array($ekstensi, $ekstensi_boleh) === false) {
+                header("location:tambah_admin.php?pesan=ekstensi");
+            } elseif ($ukuran >= $maxsize || $ukuran == 0) {
+                header("location:tambah_admin.php?pesan=ukuran");
+            } else {
+                unlink("../img/barang_hilang/" . $gambar_lama);
+                move_uploaded_file($file_tmp, '../img/barang_hilang/' . $nama_baru);
+                $query = "update barang_hilang set 
+                id_ktg_barang='$kategori', 
+                id_user='$id_user',
+                id_kota='$kota',
+                admin_acc='',
+                nama_bh='$nama_bh',
+                merk_bh='$merk_bh',
+                tgl_bh='$tgl_bh',
+                lokasi_bh='$lokasi_bh',
+                penyebab_bh='$penyebab_bh',
+                pencari_bh='$pencari_bh',
+                alamat='$alamat',
+                nomor_hp='$nomor_hp',
+                id_status='1',
+                gambar_bh='$nama_baru',
+                pesan_bh=''
+                where id_bh='$id_bh'";
+                $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+                echo "<script>alert('Data berhasil disimpan');window.location='../user/usr_barang_hilang.php';</script>";
+            }
+        } else {
+            $query = "update barang_hilang set 
+            id_ktg_barang='$kategori', 
+            id_user='$id_user',
+            id_kota='$kota',
+            admin_acc='',
+            nama_bh='$nama_bh',
+            merk_bh='$merk_bh',
+            tgl_bh='$tgl_bh',
+            lokasi_bh='$lokasi_bh',
+            penyebab_bh='$penyebab_bh',
+            pencari_bh='$pencari_bh',
+            alamat='$alamat',
+            nomor_hp='$nomor_hp',
+            id_status='1',
+            pesan_bh=''
+            where id_bh='$id_bh'";
+            $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+            echo "<script>alert('Data berhasil diupdate');window.location='../user/usr_barang_hilang.php';</script>";
+        }
     }
     ?>
 
-
+    <script type="text/javascript">
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };
+    </script>
 </body>
 
 </html>

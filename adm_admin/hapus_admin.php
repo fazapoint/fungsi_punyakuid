@@ -22,7 +22,7 @@ if (($d['gambar_user']) == $dummy_photo) {
     }
     //header("location:../admin/adm_admin.php");
 } else {
-    unlink("../gambar_user/$d[gambar_user]");
+    unlink("../img/user//$d[gambar_user]");
 
     $hapus = mysqli_query($koneksi, "delete from user where id_user='$id_user'");
     if ($hapus) { //jika berhasil

@@ -43,7 +43,7 @@
                 <td><?php echo $d['email']; ?></td>
                 <td><?php echo $d['username']; ?></td>
                 <td><?php echo $d['password']; ?></td>
-                <td><img src="../gambar_user/<?php echo $d['gambar_user']; ?>" alt="<?php echo $d['nama']; ?>" width="100px" height="100px"></td>
+                <td><img src="../img/user/<?php echo $d['gambar_user']; ?>" width="100px" height="100px"></td>
                 <td>
                     <a href="../adm_admin/hapus_admin.php?id_user= <?php echo $d['id_user']; ?>">HAPUS</a>
                 </td>

@@ -39,7 +39,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <img src="../gambar_user/<?php echo $d['gambar_user']; ?>" id="uploadPreview" style="width: 150px; height: 150px;"><br>
+                        <img src="../img/user/<?php echo $d['gambar_user']; ?>" id="uploadPreview" style="width: 150px; height: 150px;"><br>
                         <input id="uploadImage" type="file" accept=".jpg, .png" name="foto_user" onchange="PreviewImage();" />
                         <input type="hidden" name="foto_lama" value="<?php echo $d['gambar_user']; ?>">
                     </td>
@@ -83,9 +83,14 @@
                 header("location:tambah_admin.php?pesan=ekstensi");
             } elseif ($ukuran >= $maxsize || $ukuran == 0) {
                 header("location:tambah_admin.php?pesan=ukuran");
+            } elseif ($foto_lama == 'user_dummy.png') {
+                move_uploaded_file($file_tmp, '../img/user/' . $nama_baru);
+                $query = "update user set nama='$nama', gambar_user='$nama_baru' where id_user='$id_user'";
+                $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
+                echo "<script>alert('Data berhasil disimpan');window.location='../admin/adm_admin.php';</script>";
             } else {
-                unlink("../gambar_user/" . $foto_lama);
-                move_uploaded_file($file_tmp, '../gambar_user/' . $nama_baru);
+                unlink("../img/user/" . $foto_lama);
+                move_uploaded_file($file_tmp, '../img/user/' . $nama_baru);
                 $query = "update user set nama='$nama', gambar_user='$nama_baru' where id_user='$id_user'";
                 $hasil = mysqli_query($koneksi, $query) or die(mysqli_error($koneksi));
                 echo "<script>alert('Data berhasil disimpan');window.location='../admin/adm_admin.php';</script>";
